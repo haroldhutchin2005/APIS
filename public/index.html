@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API JONELL MAGALLANES</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>Redirecting, please wait...</p>
+  </div>
+
+  <header>
+    <h1>JONELL CC API</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-content" id="menuContent">
+      <div class="menu-item" onclick="navigate('/login')">Login</div>
+      <div class="menu-item" onclick="navigate('/commands')">Commands</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="endpoint-container">
+      <h2>GEOMETRY DASH RANDOM VIDEO API</h2>
+      <p>This Api link route is related geometry dash random video gameplays from TikTok video. Fire in the hole...</p>
+      <p>Example usage: <a href="/api/gd" onclick="showLoading()">/api/gd</a></p>
+    </div>
+    <div class="endpoint-container">
+      <h2>RANDOM EDIT VIDEO API</h2>
+      <p>This Api Link route is a random video of edit like preset alightmotion and content related edits</p>
+      <p>Example usage: <a href="/api/edit" onclick="showLoading()">/api/edit</a></p>
+    </div>
+    <div class="endpoint-container">
+      <h2>GPT X PINTEREST API</h2>
+      <p>This API Based On The GPT-3.5 Turbo Model Also Every Response with Image depende your question</p>
+      <p>Example usage: <a href="/api/gpt2?prompt=helll" onclick="showLoading()">/api/gpt2?prompt=your question</a></p>
+    </div>
+    <div class="endpoint-container">
+      <h2>GPT API</h2>
+      <p>This API Based On The GPT-3.5 Turbo Model Text Based</p>
+      <p>Example usage: <a href="/api/gpt?prompt=hello" onclick="showLoading()">/api/gpt?prompt=your question</a></p>
+    </div>
+
+    <div class="endpoint-container">
+      <h2>TIKTOK SEARCH API</h2>
+      <p>This Api Route Link Is a to search the TikTok Videos Based on hashtags or title of contents</p>
+      <p>Example usage: <a href="/api/tiktok/searchvideo?keywords=" onclick="showLoading()">/api/tiktok/searchvideo?keywords=</a></p>
+    </div>
+
+        <div class="endpoint-container">
+      <h2>TINYURL API</h2>
+      <p>This routes api link is a popular shortner link call tinyurl to short yours link and efficient</p>
+      <p>Example usage: <a href="/api/tinyurl?url=" onclick="showLoading()">/api/tinyurl?url=</a></p>
+        </div>
+
+    <div class="endpoint-container">
+      <h2>AI API</h2>
+      <p>Simple API AI Can ask Anything!</p>
+      <p>Example usage: <a href="/api/ai?query=hi" onclick="showLoading()">/api/ai?query=hi</a></p>
+    </div>
+
+    <div class="endpoint-container">
+      <h2>TIKTOK STALK API</h2>
+      <p>This route api to ability to stalk the profile of TikTok Users</p>
+      <p>Example usage: <a href="/api/tikstalk?unique_id=" onclick="showLoading()">/api/tikstalk?unique_id=</a></p>
+    </div>
+
+        <div class="endpoint-container">
+      <h2>INSTAGRAM STALK API</h2>
+      <p>This route api to ability to stalk the profile of Instagram Users using username</p>
+      <p>Example usage: <a href="/api/instagram/stalk?ig=" onclick="showLoading()">/api/instagram/stalk?ig=</a></p>
+        </div>
+
+            <div class="endpoint-container">
+      <h2>FACEBOOK VIDEO DOWNLOADER API</h2>
+      <p>This route API is to ability to download video from Facebook or Facebook Reels</p>
+      <p>Example usage: <a href="/api/fbdl?url=" onclick="showLoading()">/api/fbdl?url=your url video facebook</a></p>
+            </div>
+
+            <div class="endpoint-container">
+      <h2>TIKTOK DOWNLOADER API</h2>
+      <p>This route API to ability to download the video from TikTok video with link video</p>
+      <p>Example usage: <a href="/api/tikdl?url=" onclick="showLoading()">/api/tikdl?url= your video link video from TikTok</a></p>
+        </div>
+
+                <div class="endpoint-container">
+      <h2>YOUTUBE DOWNLOADER API</h2>
+      <p>This route API to ability to download the video from Youtube video with link video</p>
+      <p>Example usage: <a href="/api/yt?url=" onclick="showLoading()">/api/yt?url= your video link video from youtube</a></p>
+                </div>
+
+                <div class="endpoint-container">
+      <h2>TWITTER DOWNLOADER API</h2>
+      <p>This route API to ability to download the video from Twitter video with link video</p>
+      <p>Example usage: <a href="/api/tikdl?url=" onclick="showLoading()">/api/twitter?url= your video link video from from Twitter</a></p>
+                </div>
+
+    <div class="endpoint-container">
+      <h2>YOUTUBE DOWNLOADER API</h2>
+      <p>This route API to ability to download the video from Youtube video with link video</p>
+      <p>Example usage: <a href="/api/yt?url=" onclick="showLoading()">/api/yt?url= your video link video from youtube</a></p>
+                </div>
+
+                <div class="endpoint-container">
+      <h2>PINTEREST API</h2>
+      <p>This route API to ability to Search the images from Pinterest</p>
+      <p>Example usage: <a href="/api//pin?title=wallpaper&count=10" onclick="showLoading()">/api/pin?title=wallpaper&count=15
+</a></p>
+                </div>
+
+                          <div class="endpoint-container">
+      <h2>AI X PINTEREST API</h2>
+      <p>This route can send response with image from Pinterest and via FastAPI Using Python</p>
+      <p>Example usage: <a href="https://aiapiviafastapiwithimagebyjonellmagallanes.replit.app/ai?content=hello" onclick="showLoading()">/ai?content=your question
+</a></p>
+                          </div>
+
+  <div class="endpoint-container">
+      <h2>GLOBAL GPT API</h2>
+      <p>This route based on the CHATGPT 3.5 Model AI</p>
+      <p>Example usage: <a href="/api/globalgpt? content=hello" onclick="showLoading()">/api/gloabalgpt?content=your question
+</a></p>
+  </div>
+    </div>
+
+  <div class="endpoint-container">
+      <h2>LLAMA AI API</h2>
+      <p>LLAMA AI BY META Can Ask Questions And this is Via FastAPI By Python</p>
+      <p>Example usage: <a href="https://llmaaiviafastapibyjonellmagallanes.replit.app/meta?prompt=hello" onclick="showLoading()">/meta?prompt=your question
+</a></p>
+  </div>
+     <div class="endpoint-container">
+      <h2>LEAVE CARD CANVAS API</h2>
+      <p>This API Leave Card Who left from The Group</p>
+      <p>Example usage: <a href="https://leavecanvasapibyjonell-5715724d201c.herokuapp.com/leave?name=Jonell&id=100036956043695&background=https://i.imgur.com/bMpWUrk.jpeg&count=5" onclick="showLoading()">/leave?name=${first name of user}&id=${event.senderID}&background=${your imgur background link.jpeh&count=${participants.lenght}&</a></p>
+     </div>
+    <div class="endpoint-container">
+      <h2>WELCOME CARD CANVAS API</h2>
+      <p>This API Welcome Card Who Joined from the group</p>
+      <p>Example usage: <a href="https://join2apibyjonell-7b4fde8396f3.herokuapp.com/join2?name=Jonell&id=100036956043695&background=https://i.imgur.com/bMpWUrk.jpeg&count=5" onclick="showLoading()">/join2?name=${FirstnMe}&id=${event.senderID}&background=${your background imgur link.jpeg&count=${participants.length}</a></p>
+    </div>
+     </div>
+    <div class="endpoint-container">
+      <h2>RANKUP CARD CANVAS API</h2>
+      <p>This API Welcome Card Who Joined from the group</p>
+      <p>Example usage: <a href="https://rank2api-5faa0e644e2f.herokuapp.com/rankCard?name=Jonell%20Magallanes&level=Level20&color=auto&facebookSenderId=100036956043695&progress=69&rank=1&currentXp=589&requiredXp=139800&showXp=true" onclick="showLoading()">/rankCard?name=${name of user}&level=Level20&color=auto&facebookSenderId=${event.senderID}&progress=progressRank&rank=rank number&currentXp=expCurrent&requiredXp=expRequire&showXp=true</a></p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; PROJECT CC JONEL MAGALLANES</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
