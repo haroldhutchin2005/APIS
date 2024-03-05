@@ -3,7 +3,7 @@ const { ip } = require('nayan-server');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/ip', async (req, res) => {
   const { ipnum } = req.query;
 
   if (!ipnum) {
