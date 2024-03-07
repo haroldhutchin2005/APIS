@@ -6,7 +6,11 @@ const chalk = require("chalk");
 const { execSync } = require("child_process");
 
 const app = express();
-const port = process.env.PORT || 3000
+let port = process.env.PORT || getRandomPort();
+
+function getRandomPort() {
+  return Math.floor(Math.random() * (65535 - 49152 + 1)) + 49152;
+}
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
@@ -106,50 +110,70 @@ const installMissingModules = () => {
   }
 };
 
-// Serve login.html at the path /login
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
+function startServer() {
+  console.log(chalk.bold.cyan("Deploying routes..."));
+  loadRoutes(path.join(__dirname, "routes"));
+  console.log(chalk.bold.cyan("Routes deployment complete."));
 
-console.log(chalk.bold.cyan("Deploying routes..."));
-loadRoutes(path.join(__dirname, "routes"));
-console.log(chalk.bold.cyan("Routes deployment complete."));
+  console.log(chalk.bold.cyan("Checking and installing missing modules..."));
+  installMissingModules();
+  console.log(chalk.bold.cyan("Module installation complete."));
 
-console.log(chalk.bold.cyan("Checking and installing missing modules..."));
-installMissingModules();
-console.log(chalk.bold.cyan("Module installation complete."));
-
-// Handle login functionality
-app.post("/api/login", (req, res) => {
-  const { username, password } = req.body;
-
-  // Hardcoded login credentials for demonstration purposes
-  if (username === "jonellcc" && password === "haroldcc") {
-    res.status(200).json({ success: true });
-  } else {
-    res.status(401).json({ success: false, message: "❌ Incorrect Password or Username Please Try again" });
-  }
-});
-
-// Serve dashboard.html at the path /dashboard.html
-app.get("/dashboard.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
-});
-
-app.get("/api/userData", (req, res) => {
-  // Read user data from the file
-  try {
-    const userData = JSON.parse(fs.readFileSync("userData.json", "utf-8"));
-    res.status(200).json(userData);
-  } catch (error) {
-    console.error("Error reading user data:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-app.get("/commands", (req, res) => {
-res.sendFile(path.join(__dirname, "public", "commands.html"));
+  // Serve login.html at the path /login
+  app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "login.html"));
   });
-app.listen(port, () => {
+
+  // Handle login functionality
+  app.post("/api/login", (req, res) => {
+    const { username, password } = req.body;
+
+    // Hardcoded login credentials for demonstration purposes
+    if (username === "jonellcc" && password === "haroldcc") {
+      res.status(200).json({ success: true });
+    } else {
+      res.status(401).json({ success: false, message: "❌ Incorrect Password or Username Please Try again" });
+    }
+  });
+
+  // Serve dashboard.html at the path /dashboard.html
+  app.get("/dashboard.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+  });
+
+  app.get("/api/userData", (req, res) => {
+    // Read user data from the file
+    try {
+      const userData = JSON.parse(fs.readFileSync("userData.json", "utf-8"));
+      res.status(200).json(userData);
+    } catch (error) {
+      console.error("Error reading user data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
+  app.get("/commands", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "commands.html"));
+  });
+
+  // ... (unchanged)
+}
+
+startServer(); // Initial server start
+
+// Automatically restart server on errors
+app.on("error", (err) => {
+  console.error(chalk.bold.red(`Server error: ${err.message}`));
+  console.log(chalk.bold.yellow("Restarting server..."));
+
+  // Close the server gracefully
+  server.close(() => {
+    port = getRandomPort(); // Get a new random port
+    startServer(); // Restart the server
+  });
+});
+
+const server = app.listen(port, () => {
   console.log(
     chalk.bold(`Server is running on http://localhost:${port}`)
   );
