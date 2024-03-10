@@ -1,9 +1,9 @@
 const express = require('express');
 const { capcut } = require('betabotz-tools');
 
-const capcutRouter = express.Router();
+const router = express.Router();
 
-capcutRouter.get('/capcut', async (req, res) => {
+router.get('/capcut', async (req, res) => {
   const { url } = req.query;
 
   if (!url) {
