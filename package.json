@@ -27,6 +27,7 @@
     "node-fetch": "^3.2.6",
     "path": "^0.12.7",
     "request": "^2.88.2",
-    "string-similarity": "^4.0.4"
+    "string-similarity": "^4.0.4",
+    "betabotz-tools": "^0.0.7"
   }
 }
