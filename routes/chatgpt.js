@@ -3,7 +3,7 @@ const { openai } = require('betabotz-tools');
 
 const openaiRouter = express.Router();
 
-openaiRouter.get('/', async (req, res) => {
+openaiRouter.get('/chatgpt', async (req, res) => {
   const { input } = req.query;
 
   if (!input) {
