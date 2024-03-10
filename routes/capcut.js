@@ -20,4 +20,4 @@ router.get('/capcut', async (req, res) => {
   }
 });
 
-module.exports = capcutRouter;
+module.exports = router;
