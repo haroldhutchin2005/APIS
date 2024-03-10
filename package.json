@@ -29,7 +29,8 @@
     "request": "^2.88.2",
     "string-similarity": "^4.0.4",
     "betabotz-tools": "^0.0.7",
-    "@anthropic-ai/sdk": "^0.17.1"
+    "@anthropic-ai/sdk": "^0.17.1",
+        "serpapi": "^2.0.0"
     
   }
 }
