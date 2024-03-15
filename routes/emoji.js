@@ -4,13 +4,16 @@ const router = express.Router();
 
 router.get('/text', async (req, res) => {
   try {
-    const content = req.query.emoji;
-    const response = await axios.get(`https://jonellccapisproject-e1a0d0d91186.herokuapp.com/api/chatgpt?input=Can you convert text into emoji one emoji only response and even Tagalog even offensive word can translate it  based on the context of users here > "${content}"`);
+    const prompt = req.query.prompt;
+    const response = await axios.get(`https://jonellccapisproject-e1a0d0d91186.herokuapp.com/api/gpt?prompt=~Can you convert text into emoji one emoji only response and even Tagalog even offensive word can translate it  based on the context of users here > "${prompt}"`);
     const { result } = response.data;
-    
-    const emojiOnly = result.match(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu).join('');
 
-    res.json({ response: emojiOnly });
+    if (result && result.gptResult && result.gptResult.gpt) {
+      result.gptResult.gpt = '🤔'; 
+      res.json({ result });
+    } else {
+      res.status(404).json({ error: 'Response structure is invalid or missing necessary data' });
+    }
   } catch (error) {
     console.error('Error:', error.message);
     res.status(500).send('Internal Server Error');
@@ -18,3 +21,4 @@ router.get('/text', async (req, res) => {
 });
 
 module.exports = router;
+      
