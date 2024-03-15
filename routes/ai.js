@@ -16,13 +16,17 @@ router.get('/ai', async (req, res) => {
       return res.status(400).json({ error: 'Query parameter is required' });
     }
 
-    const apiUrl = `https://hercai.onrender.com/v3/hercai?question=${content}`;
+    const apiUrl = `https://aemt.me/gpt4?text=${content}`;
 
     const axiosResponse = await axios.get(apiUrl);
 
+    if (!axiosResponse.data.status) {
+      throw new Error('AI service returned an error');
+    }
+
     const responseData = {
       request_count: 1,
-      airesponse: axiosResponse.data.reply,
+      airesponse: axiosResponse.data.result,
     };
 
     res.json(responseData);
