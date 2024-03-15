@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/text', async (req, res) => {
   try {
     const content = req.query.emoji;
-    const response = await axios.get(`https://jonellccapisproject-e1a0d0d91186.herokuapp.com/api/chatgpt?input=Can%20you%20send%20the%20emoji%20based%20on%20this%20context%20this%20only%20one%20emoji%20no%20text%20%3E%20"${content}"`);
+    const response = await axios.get(`https://jonellccapisproject-e1a0d0d91186.herokuapp.com/api/chatgpt?input=Can you convert text into emoji one emoji only response and even Tagalog even offensive word can translate it  based on the context of users here > "${content}"`);
     const { result } = response.data;
     
     const emojiOnly = result.match(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu).join('');
