@@ -31,7 +31,8 @@
     "betabotz-tools": "^0.0.7",
     "@anthropic-ai/sdk": "^0.17.1",
         "serpapi": "^2.0.0",
-    "rsnchat": "^3.0.9"
+    "rsnchat": "^3.0.9",
+    "easy-yopmail": "^4.3.6"
     
   }
 }
