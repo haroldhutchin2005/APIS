@@ -1,27 +1,26 @@
 const express = require('express');
-const { RsnChat } = require("rsnchat");
+const axios = require('axios');
 
 const router = express.Router();
-const rsnchat = new RsnChat("rsnai_xjkAMD3KPpEoljmdjCSIn014");
 
 router.get('/dalle', async (req, res) => {
-  const { prompt } = req.query;
+    const query = req.query.text;
 
-  if (!prompt) {
-    return res.status(400).json({ error: 'Missing query parameter "prompt"' });
-  }
+    try {
+        const response = await axios.get(`https://aemt.me/dalle?text=${query}`, {
+            responseType: 'arraybuffer',
+            headers: {
+                'Content-Type': 'image/jpeg',
+            },
+        });
 
-  try {
-    const response = await rsnchat.dalle(prompt);
+        res.set('Content-Type', 'image/jpeg');
 
-
-    const imageUrl = response.url;
-    
-    res.redirect(imageUrl);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+        res.send(response.data);
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        res.status(500).send('Error fetching images');
+    }
 });
 
 module.exports = router;
